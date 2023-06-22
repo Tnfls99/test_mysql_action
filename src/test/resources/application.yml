@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/test
+    username: root
+    password: test1234
+  jpa:
+    properties:
+      hibernate:
+        show-sql: true
+        format_sql: true
+        use_sql_comments: true
+        default_batch_fetch_size: 500
+    hibernate:
+      ddl-auto: create
