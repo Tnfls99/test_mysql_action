@@ -18,9 +18,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - uses: jordiprats/mysql-action@v1.1
+      - uses: mirromutth/mysql-action@v1.1
         with:
-          mysql version: '8.0'
+          mysql database: 'test'
+          mysql root password: ${{ secrets.DB_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
 
       - name: Grant execute permission for gradle
         run: chmod +x gradlew
