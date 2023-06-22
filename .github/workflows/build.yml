@@ -18,31 +18,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - uses: samin/mysql-action@v1
-        with:
-          host port: 3307 # Optional, default value is 3306. The port of host
-          container port: 3306 # Optional, default value is 3306. The port of container
-          character set server: 'utf8' # Optional, default value is 'utf8mb4'. The '--character-set-server' option for mysqld
-          mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
-          mysql database: 'test' # Optional, default value is "test". The specified database which will be create
-          mysql root password: ${{ secrets.DB_PASSWORD }} # Required if "mysql user" is empty, default is empty. The root superuser password
-          mysql user: 'root' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Of course you can use secrets, too
-          mysql password: ${{ secrets.DB_PASSWORD }} # Required if "mysql user" exists. The password for the "mysql user"
-
-      - name: verify MySQL connection from host
-        # 아래는 실행문, cli에 입력하듯이 명령어를 작성하면 된다.
-        run: |
-          mysql --version
-          sudo apt-get install -y mysql-client
-          sudo service mysql start
-          mysql -uroot -proot -e "CREATE DATABASE test"
-          mysql -uroot -proot -e "SHOW DATABASES"
-          service mysql status
-          mysql -uroot -proot -e "USE test"
-          mysql -uroot -proot -e "SHOW TABLES"
-
-
-
       - name: Grant execute permission for gradle
         run: chmod +x gradlew
 
