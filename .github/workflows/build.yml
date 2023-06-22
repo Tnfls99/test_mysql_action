@@ -38,6 +38,8 @@ jobs:
           mysql -uroot -proot -e "CREATE DATABASE test"
           mysql -uroot -proot -e "SHOW DATABASES"
           service mysql status
+          mysql -uroot -proot -e "USE DATABASE test"
+          mysql -uroot -proot -e "SHOW TABLES"
 
 
 
